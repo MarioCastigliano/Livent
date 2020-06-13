@@ -1,0 +1,138 @@
+.navbar-brand {
+    font-weight: bold !important;
+}
+
+.searchbar-pos {
+    width: 25%;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translate(-50%) !important;
+}
+
+.input {
+    border-top-left-radius: 50px !important;
+    border-bottom-left-radius: 50px !important;
+    padding-left: 15px !important;
+    border: none !important;
+}
+
+.searchbtn {
+    border-top-right-radius: 50px !important;
+    border-bottom-right-radius: 50px !important;
+    border: none !important;
+    background-color: white !important;
+}
+
+.login-buttons > button {
+    border-radius: 50px !important;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: bold;
+}
+
+.logout-buttons > button {
+    border-radius: 50px !important;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: bold;
+}
+
+.logout-buttons {
+    display: none;
+}
+
+.signup {
+    background-color: #3786c2 !important;
+    border-color: #3786c2 !important;
+}
+
+.signup-submit {
+    border-radius: 50px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    font-weight: bold !important;
+    color: white !important;
+    background-color: #3786c2 !important;
+    border-color: #3786c2 !important;
+}
+
+.cancel-submit {
+    border-radius: 50px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    font-weight: bold !important;
+    color: white !important;
+    background-color: #d42e2e !important;
+    border-color: #d42e2e !important;
+}
+
+.login {
+    margin-left: 5px;
+    background-color: #8bbe83 !important;
+    border-color: #8bbe83 !important;
+}
+
+.logout {
+    margin-left: 5px;
+    background-color: #e3825d !important;
+    border-color: #e3825d !important;
+}
+
+.unhide {
+    display: block !important;
+}
+
+.event {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10vh;
+    display: block;
+    border: #666666 solid 1px;
+    position: absolute;
+    width: 17vw !important;
+    height: 17vw !important;
+}
+
+.event > h3 {
+    bottom: 40px;
+    position: absolute;
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+
+.event > h5 {
+    position: absolute;
+    margin-left: 6px;
+    /*margin-bottom: 5px;*/
+    bottom: 5px !important;
+    text-transform: uppercase;
+}
+
+.thumbnail {
+    top: 0;
+    left: 0;
+    position: absolute;
+    max-width:100%;
+    max-height: auto;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    font-size: 1.2rem;
+}
+
+.preview {
+    max-width: 100%;
+}
+
+.event:hover {
+    cursor: pointer;
+}
+
+.navbar-brand:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livent</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" onclick="navigateHome()">Benvenuti su Livent</a>
+        <div class="searchbar-pos">
+            <div class="input-group">
+                <input type="text" id="searchbar" class="form-control input" placeholder="Cerca un evento" aria-label="Cerca un evento" aria-describedby="button-addon2" required>
+                <div class="input-group-append">
+                    <button class="btn btn-light searchbtn" onclick="navigateSearch()" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="login-buttons">
+            <button type="button" onclick="navigateSignup()" class="btn btn-success signup">Registrati</button>
+            <button type="button" onclick="navigateLogin()" class="btn btn-success login">Login</button>
+        </div>
+        <div class="logout-buttons">
+            <button type="button" onclick="logout()" class="btn btn-success logout">Logout</button>
+        </div>
+    </nav>
+
+    <div class="container unhide" style="display: none;" id="home">
+        <div class="row catalog">
+            
+            <!--
+                <div class="col-4">
+                    <div class="event">
+                        <h3>Nome evento</h3>
+                        <h5>Luogo evento / data</h5>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="event">
+                        <h3>Nome evento</h3>
+                        <h5>Luogo evento / data</h5>
+                    </div>
+                </div>
+        -->
+        </div>
+    </div>
+
+    
+    <div class="container" style="display: none;" id="login">
+        <h4 class="my-4">Effettua il login!</h4>
+        <form class="my-2 col-4" action="#" onsubmit="login();return false">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Indirizzo email</label>
+              <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="loginpsw" placeholder="Password" required>
+            </div>
+            
+            <button class="btn btn-primary signup-submit my-4">Login</button>
+        </form>
+    </div>
+
+    
+    <div class="container" style="display: none;" id="signup">
+        <h4 class="my-4">Effettua la registrazione alla piattaforma Livent</h4>
+        <form class="my-2 col-4">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Indirizzo email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">Non condivideremo la tua email con nessuno.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Sono un organizzatore</label>
+            </div>
+            <button type="button" class="btn btn-primary signup-submit my-4">Registrami</button>
+        </form>
+    </div>
+
+    
+    <div class="container" style="display: none;" id="search">
+        search works
+    </div>
+
+    <div class="container" style="display: none;" id="event">
+        <span id="event_header">
+                <!--
+                    <h2 class="text-center mt-4">jhk</h2>
+                    <h4 class="text-center">khkjh</h4>
+                -->
+        </span>
+        <div class="row pt-4">
+            <div class="col-4 my-4">
+                <ul id="event_body">
+                    <!--
+                        <li><span class="bold">Data:</span></li>
+                        <li><span class="bold">Band:</span></li>
+                        <li><span class="bold">Generi:</span></li>
+                        <li><span class="bold">Prezzo:</span></li>
+                        <li><span class="bold">Città:</span></li>
+                        <li><span class="bold">Indirizzo:</span></li>
+                    -->
+                </ul>
+            </div>
+            <div class="col-8" id="event_img">
+            </div>
+            <div class="col-3"></div>
+            <div class="col-6 my-4 text-center" id="no-org">
+                <!--
+                    <span>Ti piace questo evento?   </span>
+                    <button onclick="submitEvent()" class="signup-submit btn mx-2">Partecipa</button>
+                    <p></p>
+                    <span>Interessato all'evento? Faccelo sapere   </span>
+                    <button onclick="intEvent()" class="signup-submit btn mx-2">Mi interessa</button> 
+                -->
+            </div>
+            <div class="col-3 my-4 text-center" id="event_mod"></div>
+        </div>
+    </div>
+
+    <div class="container" style="display: none;" id="">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>
