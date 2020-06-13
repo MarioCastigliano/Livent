@@ -66,6 +66,18 @@
     border-color: #d42e2e !important;
 }
 
+.add_sumbit {
+    border-radius: 50px !important;
+    padding: 8px 20px;
+    font-weight: bold !important;
+    color: white !important;
+    background-color: black !important;
+    border-color: black !important;
+    position: fixed;
+    right: 20vw;
+    bottom: 15vh;
+}
+
 .login {
     margin-left: 5px;
     background-color: #8bbe83 !important;

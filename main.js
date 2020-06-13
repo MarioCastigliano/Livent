@@ -42,7 +42,9 @@ var events = [
         generi: ["\"Indie rock\"", "\"Indie\""],
         data: "01/07/20",
         img: "https://notiziemusica.it/wp-content/uploads/2019/10/FB_Kaiser_Chiefs-1200x800.jpg",
-        prezzo: "12.5"
+        prezzo: "12.5",
+        part: 60,
+        int: 10
     },
     {
         nome : "Festival",
@@ -53,7 +55,9 @@ var events = [
         generi: ["\"Indie rock\"", "\"Indie\""],
         data: "22/07/20",
         img: "https://s3-eu-central-1.amazonaws.com/chasingthelightart/wp-content/uploads/20190212151037/editors011-696x465.jpg",
-        prezzo: "12.5"
+        prezzo: "12.5",
+        part: 150,
+        int: 20
     },
     {
         nome : "Concerto rock",
@@ -64,7 +68,9 @@ var events = [
         generi: ["\"Indie rock\"", "\"Indie\""],
         data: "22/07/20",
         img: "https://www.rollingstone.com/wp-content/uploads/2019/08/the-strokes-lollapalooza.jpg",
-        prezzo: "12.5"
+        prezzo: "12.5",
+        part: 66,
+        int: 8
     }
 ]
 
@@ -89,6 +95,8 @@ function login() {
                 $(".login-buttons").css("display", "none");
                 $(".logout-buttons").css("display", "inline");
                 this.navigateHome();
+                $("#loginemail").val( '' );
+                $("#loginpsw").val( '' );
                 return true;
         }
     });
@@ -125,6 +133,11 @@ function navigateHome() {
         total = total.concat(string1, this.hash(e), string1_5, e.img, string2, e.nome, string3, e.luogo, ' | ', e.data, string4);
     });
 
+    if(this.usr !== undefined && this.usr.organizzatore === true){
+        var addbutton = '<button type="button" class="add_sumbit mx-y" onclick="navigateAdd()">Crea evento</button>';
+        total = total.concat( addbutton );
+    }
+
     $(".catalog").html(total);
 
     $(".unhide").toggleClass("unhide");
@@ -141,7 +154,6 @@ function navigateSearch() {
     if(keyword.length == 0){
         return
     }
-    console.log( keyword );
 
     $(".unhide").toggleClass("unhide");
     $("#search").toggleClass("unhide");
@@ -157,9 +169,7 @@ function getAll(ar) {
     var string = '';
     ar.forEach(s => {
         string = string.concat(s, ' ');
-        console.log(s)
     });
-    console.log( string )
     return string;
 }
 
@@ -204,6 +214,7 @@ function navigateEvent (e) {
         box = box.concat(hash, box1, hash, box2);
         $("#no-org").html( box );
         $("#event_mod").html( '' );
+        $("#counter").html( '' );
 
     } else if(display.organizzatore === this.usr.mail) {
         var box3 = '<span>Ciao ';
@@ -216,6 +227,12 @@ function navigateEvent (e) {
         var box6 = '\')">Modifica</button>';
         box5 = box5.concat(this.hash(display), box6);
         $("#event_mod").html( box5 );
+
+        var counter = '<span>Partecipanti: ';
+        var counter2 = '</span><p></p><span>Partecipanti: ';
+        counter = counter.concat(display.part, counter2, display.int, '</span>');
+
+        $("#counter").html( counter );
     }
 
     $(".unhide").toggleClass("unhide");
@@ -223,16 +240,55 @@ function navigateEvent (e) {
 }
 
 function submitEvent(hash) {
-    let temp;
+
+    if(this.usr === undefined){
+        alert ('Effettua il login per interessarti agli eventi');
+        return;
+    }
+
     this.events.forEach(e => {
         if(this.hash(e) === hash){
-            temp = e;
+            if(this.usr.events_part.indexOf(e) == -1){
+                this.usr.events_part.push(e);
+                e.part = e.part + 1;
+                alert('Parteciperai a questo evento');
+            }
+            
+        
+            this.usr.events_int.forEach(ev => {
+                if(ev === e ){
+                    this.usr.events_int.splice('%d', 1);
+                    e.int = e.int -1;
+                }
+            });
         }
     });
-    this.usr.events_part.push(temp);
-
 }
 
 function intEvent(hash) {
 
+    if(this.usr === undefined){
+        alert ('Effettua il login per interessarti agli eventi');
+        return;
+    }
+
+    this.events.forEach(e => {
+        if(this.hash(e) === hash){
+            if(this.usr.events_int.indexOf(e) == -1){
+                this.usr.events_int.push(e);
+                e.int = e.int + 1;
+                alert('Questo evento ti interessa');
+            }
+        
+            this.usr.events_part.forEach(ev => {
+                if(ev === e ){
+                    this.usr.events_part.splice('%d', 1);
+                    e.part = e.part - 1;
+                }
+            });
+        }
+    });
+
+    console.log(this.usr.events_part)
+    console.log(this.usr.events_int)
 }
