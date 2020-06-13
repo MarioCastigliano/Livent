@@ -107,6 +107,54 @@ function login() {
 
 }
 
+function signup(){
+    var email = $("#signupemail").val();
+    var psw1 = $("#signuppsw").val();
+    var nome = $("#signupnome").val();
+    var cognome = $("#signupcogn").val();
+    var checked = false; 
+
+    this.usrs.forEach(u => {
+        if(u.mail === email){
+            alert("Utente già registrato");
+            return false;
+        }
+    });
+
+    if ($("#check").is(":checked")){
+        checked = true;
+        console.log("organizzatore eventi")
+    }
+
+    this.usrs.push(
+        {
+            mail : email,
+            psw : psw1,
+            nome : nome,
+            cognome: cognome,
+            organizzatore: checked,
+            events_part: [],
+            events_int: []
+        }
+    );
+    this.usr = {
+        mail : email,
+        psw : psw1,
+        nome : nome,
+        cognome: cognome,
+        organizzatore: checked,
+        events_part: [],
+        events_int: []
+    };
+
+    this.logged = true;
+    alert('Registrazione avvenuta con successo');
+    $(".login-buttons").css("display", "none");
+    $(".logout-buttons").css("display", "inline");
+    this.navigateHome();
+
+}
+
 function logout() {
     $(".logout-buttons").css("display", "none");
     $(".login-buttons").css("display", "inline");
@@ -218,12 +266,12 @@ function navigateEvent (e) {
 
     } else if(display.organizzatore === this.usr.mail) {
         var box3 = '<span>Ciao ';
-        var box4 =  ' desideri cancellare l\'evento?  </span><input type="password" class="my-2 form-control" placeholder="Password"><small id="emailHelp" class="form-text text-muted">Inserisci la password per confermare.</small><button type="button" class="cancel-submit btn my-2 mx-2" onclick="cancelEvent(\''
+        var box4 =  ' desideri cancellare l\'evento?  </span><input type="password" id="cancelpsw" class="my-2 form-control" placeholder="Password"><small id="emailHelp" class="form-text text-muted">Inserisci la password per confermare.</small><button type="button" class="cancel-submit btn my-2 mx-2" onclick="cancelEvent(\''
         var box7 = '\')">Cancella</button>';
         box3 = box3.concat(usr.nome, box4, this.hash(display), box7);
         $("#no-org").html( box3 );
 
-        var box5 = '<span> Vuoi modificare l\'evento?</span><button type="button" class="signup-submit btn my-2 mx-2" onclick="modifyEvent(\''
+        var box5 = '<span> Vuoi modificare l\'evento?</span><button type="button" class="signup-submit btn my-2 mx-2" onclick="navigateMod(\''
         var box6 = '\')">Modifica</button>';
         box5 = box5.concat(this.hash(display), box6);
         $("#event_mod").html( box5 );
@@ -237,6 +285,31 @@ function navigateEvent (e) {
 
     $(".unhide").toggleClass("unhide");
     $("#event").toggleClass("unhide");
+}
+
+function cancelEvent (hash) {
+    if($("#cancelpsw").val() === this.usr.psw) {
+        this.events.forEach(e => {
+            if(this.hash(e) === hash){
+                this.events.splice('%d', 1)
+            }
+        });
+        alert("Evento annullato");
+        this.navigateHome();
+    }
+}
+
+function navigateAdd() {
+
+    let header  = '<h4 class="my-4">Ciao '
+    let header2 = ', crea il tuo evento!</h4>'
+
+    header = header.concat(this.usr.nome, header2);
+
+    $("#event_add").html( header );
+
+    $(".unhide").toggleClass("unhide");
+    $("#event_add").toggleClass("unhide");
 }
 
 function submitEvent(hash) {
@@ -288,7 +361,4 @@ function intEvent(hash) {
             });
         }
     });
-
-    console.log(this.usr.events_part)
-    console.log(this.usr.events_int)
 }
