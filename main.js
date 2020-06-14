@@ -227,10 +227,16 @@ function navigateHome() {
         }
     });
 
+    if(this.events.length%3 !== 0){
+        total = total.concat('</div>');
+    }
+
     if(this.usr !== undefined && this.usr.organizzatore === true){
         var addbutton = '<button type="button" class="add_sumbit mx-y" onclick="navigateAdd()">Crea evento</button>';
         total = total.concat( addbutton );
     }
+
+
 
     $("#homecont").html( total );
 
