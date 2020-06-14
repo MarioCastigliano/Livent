@@ -73,7 +73,7 @@ var events = [
         int: 8
     },
     {
-        nome : "Concerto indie",
+        nome : "Concerto indie2",
         luogo: "Napoli",
         indirizzo: "Via grande n1",
         organizzatore: "caterina@gmail.com",
@@ -86,7 +86,7 @@ var events = [
         int: 10
     },
     {
-        nome : "Festival",
+        nome : "Festival2",
         luogo: "Roma",
         indirizzo: "Via grande n2",
         organizzatore: "mario@gmail.com",
@@ -99,7 +99,7 @@ var events = [
         int: 20
     },
     {
-        nome : "Concerto rock",
+        nome : "Concerto rock2",
         luogo: "Milano",
         indirizzo: "Via grande n3",
         organizzatore: "caterina@gmail.com",
