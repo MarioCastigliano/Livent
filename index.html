@@ -166,8 +166,18 @@
                 <input type="date" required>
             </div>
 
-            <button type="submit" class="btn btn-primary signup-submit my-4">Registrami</button>
+            <button type="submit" class="btn btn-primary signup-submit my-4">Crea evento</button>
         </form>
+
+        <button type="button" class="cancel-add btn my-2 mx-2" onclick="cancelCreation()">Annulla</button>
+        <div id="cancelCreation">
+            <div id="prompt" class="text-center">
+                <h5 class="my-4">Sei sicuro di voler annullare la creazione dell'evento?</h5>
+            <div class="text-center mb-4">
+                <button onclick="navigateHome()" class="fast-link btn">Sì</button>
+                <button onclick="dismiss()" class="fast-link btn">No</button>
+            </div>
+        </div>
     </div>
 
     <div class="container" style="display: none;" id="event_mod">

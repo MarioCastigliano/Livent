@@ -345,6 +345,8 @@ function navigateAdd() {
 
     header = header.concat(this.usr.nome, header2);
 
+    
+
     $("#eventAddHeader").html( header );
 
     $(".unhide").toggleClass("unhide");
@@ -400,4 +402,24 @@ function intEvent(hash) {
             });
         }
     });
+}
+
+function navigateMod(hash) {
+    let temp;
+    this.events.forEach(e => {
+        if(hash === this.hash(e)) {
+            temp = e;
+        }
+    });
+
+
+
+}
+
+function cancelCreation() {
+    $("#cancelCreation").css("display", "inline");
+}
+
+function dismiss() {
+    $("#cancelCreation").css("display", "none");
 }

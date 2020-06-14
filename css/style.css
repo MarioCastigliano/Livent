@@ -66,6 +66,40 @@
     border-color: #d42e2e !important;
 }
 
+.cancel-add {
+    border-radius: 50px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    font-weight: bold !important;
+    color: white !important;
+    background-color: #d42e2e !important;
+    border-color: #d42e2e !important;
+    position: fixed;
+    right: 20vw;
+    bottom: 15vh;
+}
+
+#cancelCreation {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.330);
+    left: 0;
+    top: 0;
+}
+
+#prompt {
+    position: fixed;
+    width: 30vw;
+    height: max-content;
+    z-index: 101;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .fast-link {
     border-radius: 50px !important;
