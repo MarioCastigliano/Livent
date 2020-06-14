@@ -98,7 +98,23 @@
 
     
     <div class="container" style="display: none;" id="search">
-        search works
+        <!--
+            <div class="row my-4 box-border" id="results">
+                <div class="col-3 my-2 clickable" onclick="navigateEvent()">
+                    <img class="thumbnail" src="https://notiziemusica.it/wp-content/uploads/2019/10/FB_Kaiser_Chiefs-1200x800.jpg" alt="">
+                </div>
+                <div class="col-6 my-2 clickable" onclick="navigateEvent()">
+                    <h4 class="my-2">Nome Evento</h4>
+                    <h6 class="uppercase">LUOVO EVENTO | GG.MM.AA</h6>
+                </div>
+                <div class="col-3 my-auto text-center">
+                    <button onclick="submitEvent()" class="fast-link btn mx-2">Partecipa</button>
+                    <p></p>
+                    <button onclick="intEvent()" class="fast-link btn mx-2">Mi interessa</button>
+                </div>
+            </div>
+        -->
+        
     </div>
 
     <div class="container" style="display: none;" id="event">
@@ -138,7 +154,20 @@
     </div>
 
     <div class="container" style="display: none;" id="event_add">
+        <span id="eventAddHeader"></span>
 
+        <form class="my-2 col-4" action="#" onsubmit="addEvent();return false">
+            <div class="form-group">
+                <label>Nome evento</label>
+                <input type="text" class="form-control" placeholder="Nome evento" id="eventName" required>
+            </div>
+            <div class="form-group">
+                <label>Data evento</label>
+                <input type="date" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary signup-submit my-4">Registrami</button>
+        </form>
     </div>
 
     <div class="container" style="display: none;" id="event_mod">

@@ -66,6 +66,17 @@
     border-color: #d42e2e !important;
 }
 
+
+.fast-link {
+    border-radius: 50px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    font-weight: bold !important;
+    color: white !important;
+    background-color: black !important;
+    border-color: black !important;
+}
+
 .add_sumbit {
     border-radius: 50px !important;
     padding: 8px 20px;
@@ -123,7 +134,7 @@
 .thumbnail {
     top: 0;
     left: 0;
-    position: absolute;
+    position: relative;
     max-width:100%;
     max-height: auto;
 }
@@ -147,4 +158,16 @@ ul {
 
 .navbar-brand:hover {
     cursor: pointer;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+.box-border {
+    border: solid 1px black;
+}
+
+.uppercase {
+    text-transform: uppercase !important;
 }

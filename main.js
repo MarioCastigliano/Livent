@@ -203,6 +203,45 @@ function navigateSearch() {
         return
     }
 
+    let results = [];
+
+    this.events.forEach(e => {
+        if(e.nome.includes( keyword )){
+            results.push(e);
+        }
+    });
+
+    let header  = '<h4 class="my-4"> Risulati per "'
+    let header2 = '"</h4>'
+
+    header = header.concat(keyword, header2);
+
+    let res = '<div class="row my-4 box-border"><div class="col-3 my-2 clickable" onclick="navigateEvent(' //hash
+    let res1 = ')"><img class="thumbnail" src="' //img
+    let res2 = '"></div><div class="col-6 my-2 clickable" onclick="navigateEvent(' //hash
+    let res3 = ')"><h4 class="my-2">'//nome evento
+    let res4 = '</h4><h6 class="uppercase">' //luogo + ' | ' + data
+    
+    let res5 = '</h6></div><div class="col-3 my-auto text-center"><button onclick="submitEvent(\'' //hash
+    let res6 = '\')" class="fast-link btn mx-2">Partecipa</button><p></p><button onclick="intEvent(\''//hash
+    let res7 = '\')" class="fast-link btn mx-2">Mi interessa</button></div></div>'
+
+    let res8 = '</h6></div><div class="col-3 my-auto text-center"><button onclick="navigateEvent(\'' //hash
+    let res9 = '\')" class="fast-link btn mx-2">Visualizza</button><p></p><button onclick="navigateMod(\''//hash
+    let res10 = '\')" class="fast-link btn mx-2">Modifica</button></div></div>'
+
+    results.forEach(e => {
+        let hash = this.hash(e);
+        header = header.concat(res, hash, res1, e.img, res2, hash, res3, e.nome, res4, e.luogo, ' | ', e.data);
+        if(!logged || (logged && e.organizzatore !== this.usr.mail)) {
+            header = header.concat(res5, hash, res6, hash, res7);
+        }else {
+            header = header.concat(res8, hash, res9, hash, res10);
+        }
+    });
+
+    $("#search").html( header );
+
     $(".unhide").toggleClass("unhide");
     $("#search").toggleClass("unhide");
 }
@@ -277,7 +316,7 @@ function navigateEvent (e) {
         $("#event_mod").html( box5 );
 
         var counter = '<span>Partecipanti: ';
-        var counter2 = '</span><p></p><span>Partecipanti: ';
+        var counter2 = '</span><p></p><span>Interessati: ';
         counter = counter.concat(display.part, counter2, display.int, '</span>');
 
         $("#counter").html( counter );
@@ -306,7 +345,7 @@ function navigateAdd() {
 
     header = header.concat(this.usr.nome, header2);
 
-    $("#event_add").html( header );
+    $("#eventAddHeader").html( header );
 
     $(".unhide").toggleClass("unhide");
     $("#event_add").toggleClass("unhide");
