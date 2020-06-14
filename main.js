@@ -206,7 +206,7 @@ function navigateSearch() {
     let results = [];
 
     this.events.forEach(e => {
-        if(e.nome.includes( keyword )){
+        if(e.nome.toLowerCase().includes( keyword.toLowerCase() )){
             results.push(e);
         }
     });
@@ -240,7 +240,7 @@ function navigateSearch() {
         }
     });
 
-    $("#search").html( header );
+    $("#search").html( header ); 
 
     $(".unhide").toggleClass("unhide");
     $("#search").toggleClass("unhide");
