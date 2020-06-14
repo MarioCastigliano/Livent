@@ -71,6 +71,45 @@ var events = [
         prezzo: "12.5",
         part: 66,
         int: 8
+    },
+    {
+        nome : "Concerto indie",
+        luogo: "Napoli",
+        indirizzo: "Via grande n1",
+        organizzatore: "caterina@gmail.com",
+        band: ["\"Campos band\"", "\"Black Pistol Fire\""],
+        generi: ["\"Indie rock\"", "\"Indie\""],
+        data: "01/07/20",
+        img: "https://notiziemusica.it/wp-content/uploads/2019/10/FB_Kaiser_Chiefs-1200x800.jpg",
+        prezzo: "12.5",
+        part: 60,
+        int: 10
+    },
+    {
+        nome : "Festival",
+        luogo: "Roma",
+        indirizzo: "Via grande n2",
+        organizzatore: "mario@gmail.com",
+        band: ["\"Campos band\"", "\"Black Pistol Fire\""],
+        generi: ["\"Indie rock\"", "\"Indie\""],
+        data: "22/07/20",
+        img: "https://s3-eu-central-1.amazonaws.com/chasingthelightart/wp-content/uploads/20190212151037/editors011-696x465.jpg",
+        prezzo: "12.5",
+        part: 150,
+        int: 20
+    },
+    {
+        nome : "Concerto rock",
+        luogo: "Milano",
+        indirizzo: "Via grande n3",
+        organizzatore: "caterina@gmail.com",
+        band: ["\"Campos band\"", "\"Black Pistol Fire\""],
+        generi: ["\"Indie rock\"", "\"Indie\""],
+        data: "22/07/20",
+        img: "https://www.rollingstone.com/wp-content/uploads/2019/08/the-strokes-lollapalooza.jpg",
+        prezzo: "12.5",
+        part: 66,
+        int: 8
     }
 ]
 
@@ -170,6 +209,7 @@ function navigateLogin() {
 
 function navigateHome() {
 
+    var row = '<div class="row">'
     var string1 = '<div class="col-4" onclick="navigateEvent(\''
     var string1_5 = '\')"> <div class="event"><img class="thumbnail" src="'; 
     var string2 = '"><h3>';
@@ -177,8 +217,14 @@ function navigateHome() {
     var string4 = '</h5></div></div>';
     var total = '';
 
-    this.events.forEach(e => {
+    this.events.forEach((e,index) => {
+        if(index % 3 === 0){
+            total = total.concat(row);
+        }
         total = total.concat(string1, this.hash(e), string1_5, e.img, string2, e.nome, string3, e.luogo, ' | ', e.data, string4);
+        if(index % 3 === 2){
+            total = total.concat('</div>');
+        }
     });
 
     if(this.usr !== undefined && this.usr.organizzatore === true){
@@ -186,7 +232,7 @@ function navigateHome() {
         total = total.concat( addbutton );
     }
 
-    $(".catalog").html(total);
+    $("#homecont").html( total );
 
     $(".unhide").toggleClass("unhide");
     $("#home").toggleClass("unhide");
@@ -345,12 +391,56 @@ function navigateAdd() {
 
     header = header.concat(this.usr.nome, header2);
 
-    
+    $("#eventName").val( '' );
+    $("#eventDate").val( '' );
+    $("#eventBands").val( '' );
+    $("#eventGenres").val( '' );
+    $("#eventPrice").val( '' );
+    $("#eventCity").val( '' );
+    $("#eventAddress").val( '' );
+    $("#eventImg").val( '' );
 
     $("#eventAddHeader").html( header );
 
     $(".unhide").toggleClass("unhide");
     $("#event_add").toggleClass("unhide");
+}
+
+function addEvent() {
+    let nome = $("#eventName").val();
+
+    let date = new Date($("#eventDate").val());
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    date = '';
+    date = date.concat(day, '/', month, '/', year);
+    let bands = $("#eventBands").val();
+    let band = bands.split(',');
+    let genres = $("#eventGenres").val();
+    let genre = genres.split(',');
+
+    let price = parseFloat($("#eventPrice").val());
+    let city = $("#eventCity").val();
+    let address = $("#eventAddress").val();
+    let img = $("#eventImg").val();
+
+    events.push({
+        nome : nome,
+        luogo: city,
+        indirizzo: address,
+        organizzatore: this.usr.mail,
+        band: band,
+        generi: genre,
+        data: date,
+        img: img,
+        prezzo: price,
+        part: 0,
+        int: 0
+    });
+
+    alert('Evento aggiunto con success!');
+    navigateHome();
 }
 
 function submitEvent(hash) {
@@ -409,10 +499,28 @@ function navigateMod(hash) {
     this.events.forEach(e => {
         if(hash === this.hash(e)) {
             temp = e;
+            this.events.splice('%d', 1);
         }
     });
 
+    let header  = '<h4 class="my-4">Ciao '
+    let header2 = ', modifica il tuo evento!</h4>'
 
+    header = header.concat(this.usr.nome, header2);
+
+    $("#eventModName").val( temp.nome );
+    $("#eventModDate").val( temp.data );
+    $("#eventModBands").val( temp.band.join(',') );
+    $("#eventModGenres").val( '' );
+    $("#eventModPrice").val( '' );
+    $("#eventModCity").val( '' );
+    $("#eventModAddress").val( '' );
+    $("#eventModImg").val( '' );
+
+    $("#eventModHeader").html( header );
+
+    $(".unhide").toggleClass("unhide");
+    $("#event_mod").toggleClass("unhide");
 
 }
 

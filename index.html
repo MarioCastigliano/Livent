@@ -30,8 +30,10 @@
     </nav>
 
     <div class="container unhide" style="display: none;" id="home">
-        <div class="row catalog">
-            
+        
+        <div id="homecont">
+
+        </div>
             <!--
                 <div class="col-4">
                     <div class="event">
@@ -46,7 +48,7 @@
                     </div>
                 </div>
         -->
-        </div>
+        
     </div>
 
     
@@ -163,7 +165,33 @@
             </div>
             <div class="form-group">
                 <label>Data evento</label>
-                <input type="date" required>
+                <input type="date" id="eventDate" required>
+            </div>
+            <div class="form-group">
+                <label>Band partecipanti</label>
+                <input type="text" class="form-control" placeholder="Band partecipanti" id="eventBands" required>
+                <small id="emailHelp" class="form-text text-muted">Separa le band con una virgola.</small>
+            </div>
+            <div class="form-group">
+                <label>Generi musicali</label>
+                <input type="text" class="form-control" placeholder="Band partecipanti" id="eventGenres" required>
+                <small id="emailHelp" class="form-text text-muted">Separa i generi con una virgola.</small>
+            </div>
+            <div class="form-group">
+                <label for="inputCity">Prezzo</label>
+                <input type="number" class="form-control" min="0" id="eventPrice" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="inputCity">Città</label>
+                <input type="text" class="form-control" id="eventCity">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Indirizzo</label>
+                <input type="text" class="form-control" id="eventAddress" placeholder="Indirizzo">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Copertina</label>
+                <input type="text" class="form-control" id="eventImg" placeholder="Link immagine">
             </div>
 
             <button type="submit" class="btn btn-primary signup-submit my-4">Crea evento</button>
@@ -174,14 +202,63 @@
             <div id="prompt" class="text-center">
                 <h5 class="my-4">Sei sicuro di voler annullare la creazione dell'evento?</h5>
             <div class="text-center mb-4">
-                <button onclick="navigateHome()" class="fast-link btn">Sì</button>
+                <button onclick="navigateHome() , dismiss()" class="fast-link btn">Sì</button>
                 <button onclick="dismiss()" class="fast-link btn">No</button>
             </div>
         </div>
     </div>
 
     <div class="container" style="display: none;" id="event_mod">
-        
+        <span id="eventModHeader"></span>
+
+        <form class="my-2 col-4" action="#" onsubmit="modEvent();return false">
+            <div class="form-group">
+                <label>Nome evento</label>
+                <input type="text" class="form-control" placeholder="Nome evento" id="eventModName" required>
+            </div>
+            <div class="form-group">
+                <label>Data evento</label>
+                <input type="date" id="eventModDate" required>
+            </div>
+            <div class="form-group">
+                <label>Band partecipanti</label>
+                <input type="text" class="form-control" placeholder="Band partecipanti" id="eventModBands" required>
+                <small id="emailHelp" class="form-text text-muted">Separa le band con una virgola.</small>
+            </div>
+            <div class="form-group">
+                <label>Generi musicali</label>
+                <input type="text" class="form-control" placeholder="Band partecipanti" id="eventModGenres" required>
+                <small id="emailHelp" class="form-text text-muted">Separa i generi con una virgola.</small>
+            </div>
+            <div class="form-group">
+                <label for="inputCity">Prezzo</label>
+                <input type="number" class="form-control" min="0" id="eventModPrice" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="inputCity">Città</label>
+                <input type="text" class="form-control" id="eventModCity">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Indirizzo</label>
+                <input type="text" class="form-control" id="eventModAddress" placeholder="Indirizzo">
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Copertina</label>
+                <input type="text" class="form-control" id="eventModImg" placeholder="Link immagine">
+            </div>
+
+            <button type="submit" class="btn btn-primary signup-submit my-4">Crea evento</button>
+        </form>
+
+        <button type="button" class="cancel-add btn my-2 mx-2" onclick="cancelCreation()">Annulla</button>
+        <div id="cancelCreation">
+            <div id="prompt" class="text-center">
+                <h5 class="my-4">Sei sicuro di voler annullare la creazione dell'evento?</h5>
+            <div class="text-center mb-4">
+                <button onclick="navigateHome() , dismiss()" class="fast-link btn">Sì</button>
+                <button onclick="dismiss()" class="fast-link btn">No</button>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
