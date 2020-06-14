@@ -71,45 +71,6 @@ var events = [
         prezzo: "12.5",
         part: 66,
         int: 8
-    },
-    {
-        nome : "Concerto indie2",
-        luogo: "Napoli",
-        indirizzo: "Via grande n1",
-        organizzatore: "caterina@gmail.com",
-        band: ["\"Campos band\"", "\"Black Pistol Fire\""],
-        generi: ["\"Indie rock\"", "\"Indie\""],
-        data: "01/07/20",
-        img: "https://notiziemusica.it/wp-content/uploads/2019/10/FB_Kaiser_Chiefs-1200x800.jpg",
-        prezzo: "12.5",
-        part: 60,
-        int: 10
-    },
-    {
-        nome : "Festival2",
-        luogo: "Roma",
-        indirizzo: "Via grande n2",
-        organizzatore: "mario@gmail.com",
-        band: ["\"Campos band\"", "\"Black Pistol Fire\""],
-        generi: ["\"Indie rock\"", "\"Indie\""],
-        data: "22/07/20",
-        img: "https://s3-eu-central-1.amazonaws.com/chasingthelightart/wp-content/uploads/20190212151037/editors011-696x465.jpg",
-        prezzo: "12.5",
-        part: 150,
-        int: 20
-    },
-    {
-        nome : "Concerto rock2",
-        luogo: "Milano",
-        indirizzo: "Via grande n3",
-        organizzatore: "caterina@gmail.com",
-        band: ["\"Campos band\"", "\"Black Pistol Fire\""],
-        generi: ["\"Indie rock\"", "\"Indie\""],
-        data: "22/07/20",
-        img: "https://www.rollingstone.com/wp-content/uploads/2019/08/the-strokes-lollapalooza.jpg",
-        prezzo: "12.5",
-        part: 66,
-        int: 8
     }
 ]
 
@@ -380,9 +341,9 @@ function navigateEvent (e) {
 
 function cancelEvent (hash) {
     if($("#cancelpsw").val() === this.usr.psw) {
-        this.events.forEach(e => {
+        this.events.forEach((e, index) => {
             if(this.hash(e) === hash){
-                this.events.splice('%d', 1)
+                this.events.splice(index, 1)
             }
         });
         alert("Evento annullato");
