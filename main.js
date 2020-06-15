@@ -1,3 +1,7 @@
+/*
+    Versione finale
+*/ 
+
 var logged = false;
 
 var usr = undefined;
