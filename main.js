@@ -1,6 +1,8 @@
 var logged = false;
 
 var usr = undefined;
+var modTemp = undefined;
+var modIndex = undefined;
 
 var usrs = [
     {
@@ -169,6 +171,10 @@ function navigateLogin() {
 };
 
 function navigateHome() {
+
+    if(modTemp !== undefined){
+        this.events.splice(this.modIndex, 0, this.modTemp);
+    }
 
     var row = '<div class="row">'
     var string1 = '<div class="col-4" onclick="navigateEvent(\''
@@ -462,11 +468,12 @@ function intEvent(hash) {
 }
 
 function navigateMod(hash) {
-    let temp;
-    this.events.forEach(e => {
+
+    this.events.forEach((e, index) => {
         if(hash === this.hash(e)) {
-            temp = e;
-            this.events.splice('%d', 1);
+            this.modTemp = e;
+            this.modIndex = index;
+            this.events.splice(index, 1);
         }
     });
 
@@ -475,26 +482,74 @@ function navigateMod(hash) {
 
     header = header.concat(this.usr.nome, header2);
 
-    $("#eventModName").val( temp.nome );
-    $("#eventModDate").val( temp.data );
-    $("#eventModBands").val( temp.band.join(',') );
-    $("#eventModGenres").val( '' );
-    $("#eventModPrice").val( '' );
-    $("#eventModCity").val( '' );
-    $("#eventModAddress").val( '' );
-    $("#eventModImg").val( '' );
-
     $("#eventModHeader").html( header );
+    
+    $("#eventModName").val( this.modTemp.nome );
+    $("#eventModDate").val( this.modTemp.data );
+    $("#eventModBands").val( this.modTemp.band.join(',') );
+    $("#eventModGenres").val( this.modTemp.generi.join(',') );
+    $("#eventModPrice").val( this.modTemp.prezzo );
+    $("#eventModCity").val( this.modTemp.luogo );
+    $("#eventModAddress").val( this.modTemp.indirizzo );
+    $("#eventModImg").val( this.modTemp.img );
+    
 
     $(".unhide").toggleClass("unhide");
-    $("#event_mod").toggleClass("unhide");
+    $("#eventMod").toggleClass("unhide");
 
+}
+
+function modEvent() {
+    let nome = $("#eventModName").val();
+
+    let date = new Date($("#eventModDate").val());
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    date = '';
+    date = date.concat(day, '/', month, '/', year);
+    let bands = $("#eventModBands").val();
+    let band = bands.split(',');
+    let genres = $("#eventModGenres").val();
+    let genre = genres.split(',');
+
+    let price = parseFloat($("#eventModPrice").val());
+    let city = $("#eventModCity").val();
+    let address = $("#eventModAddress").val();
+    let img = $("#eventModImg").val();
+
+    events.splice(modIndex, 0,{
+        nome : nome,
+        luogo: city,
+        indirizzo: address,
+        organizzatore: this.usr.mail,
+        band: band,
+        generi: genre,
+        data: date,
+        img: img,
+        prezzo: price,
+        part: modTemp.part,
+        int: modTemp.int
+    });
+
+    this.modTemp = undefined;
+    this.modIndex = undefined;
+
+    navigateHome();
 }
 
 function cancelCreation() {
     $("#cancelCreation").css("display", "inline");
 }
 
+function cancelMod() {
+    $("#cancelMod").css("display", "inline");
+}
+
 function dismiss() {
     $("#cancelCreation").css("display", "none");
+}
+
+function dismissMod() {
+    $("#cancelMod").css("display", "none");
 }

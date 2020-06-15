@@ -90,7 +90,19 @@
     top: 0;
 }
 
-#prompt {
+#cancelMod {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.330);
+    left: 0;
+    top: 0;
+}
+
+
+.prompt {
     position: fixed;
     width: 30vw;
     height: max-content;
