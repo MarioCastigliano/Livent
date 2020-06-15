@@ -1,10 +1,10 @@
 #Progetto IUM_Livent
 
->Mario Castigliano: 0512104718;
+>Mario Castigliano: 0512104718
 
->Luca Siviero: 0512104862;
+>Luca Siviero: 0512104862
 
->Gruppo n.36.
+Gruppo n.36.
 
 In questa repository sono presenti i file di implementazione del progetto di gruppo Livent.
 Per provare il sistema Livent bisogna scaricare la cartella e aprire il file "index.html" con un browser web (È consigliato Chrome).
