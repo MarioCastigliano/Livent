@@ -11,7 +11,10 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" onclick="navigateHome()">Benvenuti su Livent</a>
+        <a class="navbar-brand" onclick="navigateHome()">
+            <img src="home.png" width="27" height="27" class="d-inline-block align-top" alt="">
+            Benvenuti su Livent
+        </a>
         <div class="searchbar-pos">
             <div class="input-group">
                 <input type="text" id="searchbar" class="form-control input" placeholder="Cerca un evento" aria-label="Cerca un evento" aria-describedby="button-addon2" required>
@@ -199,16 +202,17 @@
 
         <button type="button" class="cancel-add btn my-2 mx-2" onclick="cancelCreation()">Annulla</button>
         <div id="cancelCreation">
-            <div id="prompt" class="text-center">
+            <div class="prompt text-center">
                 <h5 class="my-4">Sei sicuro di voler annullare la creazione dell'evento?</h5>
-            <div class="text-center mb-4">
-                <button onclick="navigateHome() , dismiss()" class="fast-link btn">Sì</button>
-                <button onclick="dismiss()" class="fast-link btn">No</button>
+                <div class="text-center mb-4">
+                    <button onclick="navigateHome() , dismiss()" class="fast-link btn">Sì</button>
+                    <button onclick="dismiss()" class="fast-link btn">No</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container" style="display: none;" id="event_mod">
+    <div class="container" style="display: none;" id="eventMod">
         <span id="eventModHeader"></span>
 
         <form class="my-2 col-4" action="#" onsubmit="modEvent();return false">
@@ -247,16 +251,17 @@
                 <input type="text" class="form-control" id="eventModImg" placeholder="Link immagine">
             </div>
 
-            <button type="submit" class="btn btn-primary signup-submit my-4">Crea evento</button>
+            <button type="submit" class="btn btn-primary signup-submit my-4">Modifica evento</button>
         </form>
 
-        <button type="button" class="cancel-add btn my-2 mx-2" onclick="cancelCreation()">Annulla</button>
-        <div id="cancelCreation">
-            <div id="prompt" class="text-center">
-                <h5 class="my-4">Sei sicuro di voler annullare la creazione dell'evento?</h5>
-            <div class="text-center mb-4">
-                <button onclick="navigateHome() , dismiss()" class="fast-link btn">Sì</button>
-                <button onclick="dismiss()" class="fast-link btn">No</button>
+        <button type="button" class="cancel-add btn my-2 mx-2" onclick="cancelMod()">Annulla</button>
+        <div id="cancelMod">
+            <div class="prompt text-center">
+                <h5 class="my-4">Sei sicuro di voler annullare la modifica dell'evento?</h5>
+                <div class="text-center mb-4">
+                    <button onclick="navigateHome() , dismissMod()" class="fast-link btn">Sì</button>
+                    <button onclick="dismissMod()" class="fast-link btn">No</button>
+                </div>
             </div>
         </div>
     </div>
