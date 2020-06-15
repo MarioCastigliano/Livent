@@ -229,10 +229,10 @@ function navigateSearch() {
 
     header = header.concat(keyword, header2);
 
-    let res = '<div class="row my-4 box-border"><div class="col-3 my-2 clickable" onclick="navigateEvent(' //hash
-    let res1 = ')"><img class="thumbnail" src="' //img
-    let res2 = '"></div><div class="col-6 my-2 clickable" onclick="navigateEvent(' //hash
-    let res3 = ')"><h4 class="my-2">'//nome evento
+    let res = '<div class="row my-4 box-border"><div class="col-3 my-2 clickable" onclick="navigateEvent(\'' //hash
+    let res1 = '\')"><img class="thumbnail" src="' //img
+    let res2 = '"></div><div class="col-6 my-2 clickable" onclick="navigateEvent(\'' //hash
+    let res3 = '\')"><h4 class="my-2">'//nome evento
     let res4 = '</h4><h6 class="uppercase">' //luogo + ' | ' + data
     
     let res5 = '</h6></div><div class="col-3 my-auto text-center"><button onclick="submitEvent(\'' //hash
